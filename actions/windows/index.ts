@@ -20,6 +20,6 @@ export const createWindow = () => {
   Menu.setApplicationMenu(null);
 
   // globalShortcut.register('f12', () => {
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
   // });
 };

@@ -66,6 +66,10 @@ const UploadFilePath: React.FC = () => {
           },
           () => {
             setRunningLoading(false);
+            return messageApi.open({
+              type: 'success',
+              content: 'Success',
+            });
           },
           () => {
             setRunningLoading(false);
