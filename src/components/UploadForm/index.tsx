@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
-import { Form, message, Radio, UploadFile, UploadProps } from 'antd';
+import { Form, message, Radio, UploadFile, UploadProps, Typography } from 'antd';
 import { Button, Upload } from 'antd';
 import { RcFile } from 'antd/es/upload';
 import styles from './index.module.scss';
 import { useForm } from 'antd/es/form/Form';
+
+const { Title } = Typography;
 
 export const modelList = [
   {
@@ -65,16 +67,26 @@ const UploadFilePath: React.FC = () => {
           () => {
             setRunningLoading(false);
           },
+          () => {
+            setRunningLoading(false);
+            return messageApi.open({
+              type: 'error',
+              content: 'Wrong Model',
+            });
+          },
         );
       })
       .catch((err) => {
         console.error('handleRunning err: ', err);
-        setRunningLoading(false);
       });
   };
 
   return (
     <div className={styles.contents}>
+      <div className={styles.header}>
+        <Title level={2}>Data Conversion Widget</Title>
+      </div>
+
       <div className={styles.formBox}>
         <Form form={form} onFinish={handleRunning}>
           <Form.Item

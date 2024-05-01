@@ -20,7 +20,7 @@ if (process.platform === 'win32') {
   executablePath = path.join(__dirname, '../../script/microsoft/dist/data_conversion.exe');
 }
 
-const handlePath = (resp: RespType, fn?: () => void) => {
+const handlePath = (resp: RespType, fn?: () => void, errFn?: () => void) => {
   if (executablePath) {
     const { files, model } = resp;
     const inputFile = files.map((f) => f.path).join(',');
@@ -30,6 +30,7 @@ const handlePath = (resp: RespType, fn?: () => void) => {
       (error, stdout) => {
         if (error) {
           console.error(`exec error: ${error}`);
+          errFn && errFn();
           return;
         }
         console.log(`stdout: ${stdout}`);

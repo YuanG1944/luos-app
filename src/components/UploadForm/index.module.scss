@@ -6,6 +6,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+  }
   .formBox {
     flex: 1;
     display: flex;
