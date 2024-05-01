@@ -3,7 +3,6 @@ import pandas as pd
 import re
 import sys
 from datetime import datetime
-from dateutil.parser import parse
 import gzip
 import shutil
 
