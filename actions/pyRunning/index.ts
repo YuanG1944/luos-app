@@ -10,8 +10,6 @@ export interface RespType {
   model: 'RWA' | 'Others' | 'Credit_Limits' | 'Finance';
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 let executablePath = '';
 
 if (process.platform === 'darwin') {
@@ -21,12 +19,6 @@ if (process.platform === 'darwin') {
 if (process.platform === 'win32') {
   executablePath = path.join(__dirname, '../../script/microsoft/dist/data_conversion.exe');
 }
-=======
-const executablePath = path.join(__dirname, '../../script/microsoft/dist/data_conversion');
->>>>>>> Stashed changes
-=======
-const executablePath = path.join(__dirname, '../../script/microsoft/dist/data_conversion');
->>>>>>> Stashed changes
 
 const handlePath = (resp: RespType, fn?: () => void) => {
   if (executablePath) {
