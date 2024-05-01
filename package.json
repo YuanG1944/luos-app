@@ -6,12 +6,12 @@
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start /src/",
-    "pyinstall-win": "pyinstaller --onefile --distpath=.\\script\\microsoft\\dist --workpath=.\\script\\microsoft\\build",
-    "pyinstall-mac": "pyinstaller --onefile --distpath=./script/microsoft/dist --workpath=./script/microsoft/build",
     "package": "electron-forge package /resources/app/",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "pyinstall-win": "pyinstaller --onefile --distpath=.\\script\\microsoft\\dist --workpath=.\\script\\microsoft\\build",
+    "pyinstall-mac": "pyinstaller --onefile --distpath=./script/apple/dist --workpath=./script/apple/build"
   },
   "keywords": [],
   "author": {

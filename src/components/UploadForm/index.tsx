@@ -67,8 +67,9 @@ const UploadFilePath: React.FC = () => {
           },
         );
       })
-      .catch(() => {
-        console.info('xxxxx');
+      .catch((err) => {
+        console.error('handleRunning err: ', err);
+        setRunningLoading(false);
       });
   };
 
