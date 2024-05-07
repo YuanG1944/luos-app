@@ -83,6 +83,24 @@ def round_if_float(x):
         return round(x, 4)
     return x
 
+def float_to_txt(x):
+    try:
+        # 转换为浮点数
+        float_value = float(x)
+        # 格式化为百分比形式，保持原有的精度，这里假设Excel已经给出了正确的精度
+        # 计算小数点后的数字数量
+        str_value = str(x)
+        if '.' in str_value:
+            decimal_places = len(str_value.split('.')[1])
+            percentage_format = f"{{:.{decimal_places}%}}"
+        else:
+            percentage_format = "{:.0%}"
+
+        return percentage_format.format(float_value)
+    except ValueError:
+        # 如果转换失败，直接返回原始字符串
+        return x
+    
 
 def generate_common_info(sheet_name, record_num):
     """根据给定的表名和记录数生成通用信息。"""
@@ -149,6 +167,13 @@ def process_excel_file(file_path, output_path):
             # 转换为 Pandas 的零索引并对每列进行操作
             for col in column_indices:
                 df.iloc[:, col] = df.iloc[:, col].apply(round_if_float)
+        if sheet_name == "G03":
+            # 定义列标签
+            columns_to_process = ['I', 'J']
+            column_indices = [column_label_to_index(label) for label in columns_to_process]
+            # 转换为 Pandas 的零索引并对每列进行操作
+            for col in column_indices:
+                df.iloc[:, col] = df.iloc[:, col].apply(float_to_txt)
         if sheet_name == "B01":
             df.iloc[:, 7] = df.iloc[:, 7].astype(str).str.zfill(2)
         if sheet_name == "B03":
